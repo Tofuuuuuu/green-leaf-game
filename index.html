@@ -12,7 +12,6 @@
             --primary-light: #52b788;
             --accent: #d8f3dc;
             --amber: #f4a261;
-            --earth: #744210;
             --bg: #f8faf9;
             --card: #ffffff;
             --text: #1b4332;
@@ -68,38 +67,25 @@
 
         .progress-bar {
             height: 100%;
-            width: 0%;
+            width: 100%;
             background: linear-gradient(90deg, var(--primary-light), var(--primary));
             transition: width 0.3s ease;
         }
 
         .nav-btn {
-            background: #ccc;
-            color: #666;
+            background: var(--primary);
+            color: white;
             border: none;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: bold;
-            cursor: not-allowed;
+            cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-        }
-
-        .nav-btn.active {
-            background: var(--primary);
-            color: white;
-            cursor: pointer;
             box-shadow: 0 4px 10px rgba(45, 106, 79, 0.3);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
         }
 
         .page {
@@ -152,14 +138,7 @@
             border-radius: 16px;
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            border-left: 6px solid #ccc;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .learn-card.read {
-            border-left-color: var(--primary-light);
-            background: #fdfdfd;
+            border-left: 6px solid var(--primary-light);
         }
 
         .card-header {
@@ -181,11 +160,6 @@
             font-size: 0.75rem;
             padding: 3px 8px;
             border-radius: 10px;
-            background: #eee;
-            color: #888;
-        }
-
-        .learn-card.read .status-tag {
             background: var(--accent);
             color: var(--primary);
         }
@@ -222,8 +196,8 @@
         }
 
         .big-start-btn {
-            background: #ccc;
-            color: #666;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
             border: none;
             padding: 16px 32px;
             font-size: 1.2rem;
@@ -231,21 +205,14 @@
             border-radius: 30px;
             width: 100%;
             max-width: 350px;
-            cursor: not-allowed;
+            cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 15px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-        }
-
-        .big-start-btn.unlocked {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            color: white;
-            cursor: pointer;
             box-shadow: 0 6px 20px rgba(82, 183, 136, 0.4);
-            animation: pulse 1.5s infinite;
         }
 
         .game-dashboard {
@@ -259,21 +226,9 @@
             align-items: center;
         }
 
-        .stat-box {
-            text-align: center;
-        }
-
-        .stat-box label {
-            font-size: 0.75rem;
-            color: #777;
-            display: block;
-        }
-
-        .stat-box span {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
+        .stat-box { text-align: center; }
+        .stat-box label { font-size: 0.75rem; color: #777; display: block; }
+        .stat-box span { font-size: 1.4rem; font-weight: bold; color: var(--primary); }
 
         .question-card {
             background: var(--primary);
@@ -290,16 +245,8 @@
             align-items: center;
         }
 
-        .question-card label {
-            font-size: 0.8rem;
-            opacity: 0.8;
-            margin-bottom: 4px;
-        }
-
-        .question-card h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
+        .question-card label { font-size: 0.8rem; opacity: 0.8; margin-bottom: 4px; }
+        .question-card h2 { font-size: 1.25rem; font-weight: 700; }
 
         .grid-container {
             display: grid;
@@ -359,13 +306,8 @@
             pointer-events: none;
         }
 
-        .mole.up {
-            bottom: 5%;
-        }
-
-        .mole.hit {
-            background: #e63946 !important;
-        }
+        .mole.up { bottom: 5%; }
+        .mole.hit { background: #e63946 !important; }
 
         .hit-score {
             position: absolute;
@@ -382,10 +324,7 @@
             100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
         }
 
-        .control-panel {
-            margin-top: 20px;
-            text-align: center;
-        }
+        .control-panel { margin-top: 20px; text-align: center; }
 
         .btn {
             background: var(--primary);
@@ -412,10 +351,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
         .modal {
             background: white;
@@ -432,12 +368,6 @@
             color: var(--amber);
             margin: 15px 0;
         }
-
-        @media (max-width: 480px) {
-            .hero-banner h1 { font-size: 1.4rem; }
-            .grid-container { gap: 8px; padding: 10px; }
-            .mole-text { font-size: 0.7rem; }
-        }
     </style>
 </head>
 <body>
@@ -450,7 +380,7 @@
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
-        <button class="nav-btn" id="gameNavBtn">
+        <button class="nav-btn" id="gameNavBtn" onclick="switchPage('gamePage')">
             <i class="fa-solid fa-gamepad"></i> 挑戰遊戲
         </button>
     </header>
@@ -458,15 +388,15 @@
     <div class="page active" id="learnPage">
         <div class="hero-banner">
             <h1>綠葉密碼：植物多樣性與碳匯</h1>
-            <p>點擊閱讀以下三個重點章節，即可解鎖「綠葉打地鼠挑戰賽」！</p>
+            <p>閱讀學習內容，隨時點擊下方或右上角按鈕開始打地鼠挑戰！</p>
             <span class="team-badge"><i class="fa-solid fa-users"></i> 第二組 專案計畫</span>
         </div>
 
         <div class="card-grid">
-            <div class="learn-card" onclick="readCard(this, 1)">
+            <div class="learn-card">
                 <div class="card-header">
                     <h3><i class="fa-solid fa-bullseye"></i> 一、專案核心與目標</h3>
-                    <span class="status-tag">點擊閱讀</span>
+                    <span class="status-tag">✓ 已解鎖</span>
                 </div>
                 <div class="card-body">
                     <p>本專案聚焦於校園植物多樣性與碳匯調查，透過整合物種辨識、標準化採樣與 DBH 量測，打造數位化生態紀錄。</p>
@@ -479,10 +409,10 @@
                 </div>
             </div>
 
-            <div class="learn-card" onclick="readCard(this, 2)">
+            <div class="learn-card">
                 <div class="card-header">
                     <h3><i class="fa-solid fa-mobile-screen"></i> 二、數位科技應用</h3>
-                    <span class="status-tag">點擊閱讀</span>
+                    <span class="status-tag">✓ 已解鎖</span>
                 </div>
                 <div class="card-body">
                     <p>結合手機攝影與 iNaturalist 進行即時辨識，建立「隨查、隨看、隨記」戶外實作模式，化繁為簡降低認知負荷。</p>
@@ -494,10 +424,10 @@
                 </div>
             </div>
 
-            <div class="learn-card" onclick="readCard(this, 3)">
+            <div class="learn-card">
                 <div class="card-header">
                     <h3><i class="fa-solid fa-award"></i> 三、團隊職能與評量</h3>
-                    <span class="status-tag">點擊閱讀</span>
+                    <span class="status-tag">✓ 已解鎖</span>
                 </div>
                 <div class="card-body">
                     <p>涵蓋 KSA（知識、技能、態度）三大面向，評量辨識準確度、數據品質與圖鑑完整度，綜合評分目標達 80% 以上。</p>
@@ -511,9 +441,9 @@
         </div>
 
         <div class="unlock-zone">
-            <h3 id="unlockStatusText"><i class="fa-solid fa-lock"></i> 完成上述 3 個單元閱讀以解鎖遊戲</h3>
-            <button class="big-start-btn" id="bigStartBtn" onclick="switchPage('gamePage')">
-                <i class="fa-solid fa-lock"></i> 請先閱讀上方章節
+            <h3><i class="fa-solid fa-circle-check" style="color:var(--primary-light);"></i> 學習準備完成！</h3>
+            <button class="big-start-btn" onclick="switchPage('gamePage')">
+                <i class="fa-solid fa-play"></i> 開啟綠葉打地鼠挑戰
             </button>
         </div>
     </div>
@@ -573,7 +503,6 @@
             { q: "評量焦點中的綜合評分目標要達多少%以上？", a: "80%", opt: ["80%", "60%", "70%", "90%"] }
         ];
 
-        let readCards = new Set();
         let score = 0;
         let combo = 0;
         let timeLeft = 30;
@@ -582,27 +511,6 @@
         let currentQ = null;
         let activeMole = -1;
         let gameActive = false;
-
-        function readCard(cardEl, id) {
-            readCards.add(id);
-            cardEl.classList.add('read');
-            cardEl.querySelector('.status-tag').innerText = '✓ 已完成';
-            
-            let percent = (readCards.size / 3) * 100;
-            document.getElementById('progressBar').style.width = percent + '%';
-
-            if (readCards.size === 3) {
-                document.getElementById('unlockStatusText').innerHTML = '<i class="fa-solid fa-circle-check" style="color:var(--primary-light);"></i> 學習完畢！遊戲已解鎖';
-                
-                let bigBtn = document.getElementById('bigStartBtn');
-                bigBtn.classList.add('unlocked');
-                bigBtn.innerHTML = '<i class="fa-solid fa-play"></i> 開啟綠葉打地鼠挑戰';
-                
-                let navBtn = document.getElementById('gameNavBtn');
-                navBtn.classList.add('active');
-                navBtn.onclick = () => switchPage('gamePage');
-            }
-        }
 
         function switchPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
