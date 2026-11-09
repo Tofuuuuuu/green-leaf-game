@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* 導覽列與進度標頭 */
         header {
             position: sticky;
             top: 0;
@@ -65,7 +64,6 @@
             height: 12px;
             border-radius: 6px;
             overflow: hidden;
-            position: relative;
         }
 
         .progress-bar {
@@ -85,7 +83,6 @@
             font-weight: bold;
             cursor: not-allowed;
             transition: all 0.3s ease;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -105,7 +102,6 @@
             100% { transform: scale(1); }
         }
 
-        /* 區塊隱藏切換 */
         .page {
             display: none;
             max-width: 900px;
@@ -117,7 +113,6 @@
             display: block;
         }
 
-        /* 學習區塊樣式 */
         .hero-banner {
             background: linear-gradient(135deg, #2d6a4f, #1b4332);
             color: white;
@@ -253,7 +248,6 @@
             animation: pulse 1.5s infinite;
         }
 
-        /* 打地鼠遊戲區塊樣式 */
         .game-dashboard {
             background: white;
             border-radius: 20px;
@@ -300,7 +294,6 @@
             font-size: 0.8rem;
             opacity: 0.8;
             margin-bottom: 4px;
-            letter-spacing: 1px;
         }
 
         .question-card h2 {
@@ -308,7 +301,6 @@
             font-weight: 700;
         }
 
-        /* 地鼠草地與洞穴 */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -344,10 +336,8 @@
             justify-content: flex-start;
             padding-top: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-        /* 地鼠臉部特徵 */
         .mole::before {
             content: '';
             width: 14px;
@@ -366,8 +356,6 @@
             border-radius: 8px;
             text-align: center;
             width: 90%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-            word-break: break-all;
             pointer-events: none;
         }
 
@@ -377,10 +365,8 @@
 
         .mole.hit {
             background: #e63946 !important;
-            transform: scale(0.9);
         }
 
-        /* Hit 動效數字 */
         .hit-score {
             position: absolute;
             color: #ffb703;
@@ -396,7 +382,6 @@
             100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
         }
 
-        /* 遊戲控制與彈窗 */
         .control-panel {
             margin-top: 20px;
             text-align: center;
@@ -412,14 +397,8 @@
             border-radius: 25px;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(45, 106, 79, 0.3);
-            transition: all 0.2s;
         }
 
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        /* 結算彈窗 */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -445,17 +424,6 @@
             width: 90%;
             max-width: 400px;
             text-align: center;
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal {
-            transform: scale(1);
-        }
-
-        .modal h2 {
-            color: var(--primary);
-            margin-bottom: 10px;
         }
 
         .final-score {
@@ -468,20 +436,18 @@
         @media (max-width: 480px) {
             .hero-banner h1 { font-size: 1.4rem; }
             .grid-container { gap: 8px; padding: 10px; }
-            .mole-text { font-size: 0.7rem; padding: 2px 4px; }
-            .question-card h2 { font-size: 1.05rem; }
+            .mole-text { font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 頂部導覽與學習進度棒 -->
     <header>
         <div class="logo">
             <i class="fa-solid fa-leaf"></i>
             <span>綠葉密碼</span>
         </div>
-        <div class="progress-bar-container" title="學習進度">
+        <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
         <button class="nav-btn" id="gameNavBtn">
@@ -489,13 +455,260 @@
         </button>
     </header>
 
-    <!-- 學習階段 -->
     <div class="page active" id="learnPage">
         <div class="hero-banner">
             <h1>綠葉密碼：植物多樣性與碳匯</h1>
             <p>點擊閱讀以下三個重點章節，即可解鎖「綠葉打地鼠挑戰賽」！</p>
-            <span class="team-badge"><i class="fa-solid fa-users"></i> 第二组 專案計畫</span>
+            <span class="team-badge"><i class="fa-solid fa-users"></i> 第二組 專案計畫</span>
         </div>
 
         <div class="card-grid">
-            <!-- 卡片 1 -->
+            <div class="learn-card" onclick="readCard(this, 1)">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-bullseye"></i> 一、專案核心與目標</h3>
+                    <span class="status-tag">點擊閱讀</span>
+                </div>
+                <div class="card-body">
+                    <p>本專案聚焦於校園植物多樣性與碳匯調查，透過整合物種辨識、標準化採樣與 DBH 量測，打造數位化生態紀錄。</p>
+                    <div class="key-tags">
+                        <span class="key-tag">iNaturalist</span>
+                        <span class="key-tag">DBH胸高直徑</span>
+                        <span class="key-tag">GPS定位</span>
+                        <span class="key-tag">10筆標準資料</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="learn-card" onclick="readCard(this, 2)">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-mobile-screen"></i> 二、數位科技應用</h3>
+                    <span class="status-tag">點擊閱讀</span>
+                </div>
+                <div class="card-body">
+                    <p>結合手機攝影與 iNaturalist 進行即時辨識，建立「隨查、隨看、隨記」戶外實作模式，化繁為簡降低認知負荷。</p>
+                    <div class="key-tags">
+                        <span class="key-tag">隨選即學</span>
+                        <span class="key-tag">數位圖鑑</span>
+                        <span class="key-tag">互動知識卡</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="learn-card" onclick="readCard(this, 3)">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-award"></i> 三、團隊職能與評量</h3>
+                    <span class="status-tag">點擊閱讀</span>
+                </div>
+                <div class="card-body">
+                    <p>涵蓋 KSA（知識、技能、態度）三大面向，評量辨識準確度、數據品質與圖鑑完整度，綜合評分目標達 80% 以上。</p>
+                    <div class="key-tags">
+                        <span class="key-tag">KSA素養</span>
+                        <span class="key-tag">80%以上合格</span>
+                        <span class="key-tag">永續經營</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="unlock-zone">
+            <h3 id="unlockStatusText"><i class="fa-solid fa-lock"></i> 完成上述 3 個單元閱讀以解鎖遊戲</h3>
+            <button class="big-start-btn" id="bigStartBtn" onclick="switchPage('gamePage')">
+                <i class="fa-solid fa-lock"></i> 請先閱讀上方章節
+            </button>
+        </div>
+    </div>
+
+    <div class="page" id="gamePage">
+        <div class="game-dashboard">
+            <div class="stat-box">
+                <label>剩餘時間</label>
+                <span id="timeLeft">30</span>s
+            </div>
+            <div class="stat-box">
+                <label>目前得分</label>
+                <span id="score">0</span>
+            </div>
+            <div class="stat-box">
+                <label>連擊 Combo</label>
+                <span id="combo">0</span>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <label>LEAF CIPHER QUESTION</label>
+            <h2 id="questionText">準備好了嗎？點擊下方按鈕開始遊戲！</h2>
+        </div>
+
+        <div class="grid-container" id="grid">
+            <div class="hole-wrapper"><div class="mole" data-index="0"><span class="mole-text"></span></div></div>
+            <div class="hole-wrapper"><div class="mole" data-index="1"><span class="mole-text"></span></div></div>
+            <div class="hole-wrapper"><div class="mole" data-index="2"><span class="mole-text"></span></div></div>
+            <div class="hole-wrapper"><div class="mole" data-index="3"><span class="mole-text"></span></div></div>
+            <div class="hole-wrapper"><div class="mole" data-index="4"><span class="mole-text"></span></div></div>
+            <div class="hole-wrapper"><div class="mole" data-index="5"><span class="mole-text"></span></div></div>
+        </div>
+
+        <div class="control-panel">
+            <button class="btn" id="startBtn" onclick="startGame()">開始打地鼠挑戰</button>
+            <button class="btn" style="background:#6c757d; margin-left:10px;" onclick="switchPage('learnPage')">返回學習館</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h2>🎉 挑戰完成！</h2>
+            <p>你在綠葉密碼打地鼠中獲得了：</p>
+            <div class="final-score" id="finalScore">0</div>
+            <p id="evalComment" style="margin-bottom:20px; color:#555;"></p>
+            <button class="btn" onclick="closeModal()">再試一次</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "專案中 DBH 量測是指樹木的什麼？", a: "胸高直徑", opt: ["胸高直徑", "樹冠寬度", "根系深度", "樹葉長度"] },
+            { q: "本專案主要使用的辨識 App 是？", a: "iNaturalist", opt: ["iNaturalist", "PlantNet", "Seek", "Google Lens"] },
+            { q: "專案計畫預計產出至少幾筆標準化植物資料？", a: "10筆", opt: ["10筆", "5筆", "20筆", "50筆"] },
+            { q: "專案執行計畫是由第幾組發起？", a: "第二組", opt: ["第二組", "第一組", "第三組", "第四組"] },
+            { q: "評量焦點中的綜合評分目標要達多少%以上？", a: "80%", opt: ["80%", "60%", "70%", "90%"] }
+        ];
+
+        let readCards = new Set();
+        let score = 0;
+        let combo = 0;
+        let timeLeft = 30;
+        let gameTimer = null;
+        let moleTimer = null;
+        let currentQ = null;
+        let activeMole = -1;
+        let gameActive = false;
+
+        function readCard(cardEl, id) {
+            readCards.add(id);
+            cardEl.classList.add('read');
+            cardEl.querySelector('.status-tag').innerText = '✓ 已完成';
+            
+            let percent = (readCards.size / 3) * 100;
+            document.getElementById('progressBar').style.width = percent + '%';
+
+            if (readCards.size === 3) {
+                document.getElementById('unlockStatusText').innerHTML = '<i class="fa-solid fa-circle-check" style="color:var(--primary-light);"></i> 學習完畢！遊戲已解鎖';
+                
+                let bigBtn = document.getElementById('bigStartBtn');
+                bigBtn.classList.add('unlocked');
+                bigBtn.innerHTML = '<i class="fa-solid fa-play"></i> 開啟綠葉打地鼠挑戰';
+                
+                let navBtn = document.getElementById('gameNavBtn');
+                navBtn.classList.add('active');
+                navBtn.onclick = () => switchPage('gamePage');
+            }
+        }
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function startGame() {
+            if(gameActive) return;
+            gameActive = true;
+            score = 0;
+            combo = 0;
+            timeLeft = 30;
+            document.getElementById('score').innerText = score;
+            document.getElementById('combo').innerText = combo;
+            document.getElementById('timeLeft').innerText = timeLeft;
+            document.getElementById('startBtn').innerText = '挑戰進行中...';
+
+            gameTimer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timeLeft').innerText = timeLeft;
+                if(timeLeft <= 0) endGame();
+            }, 1000);
+
+            nextQuestion();
+            popUpMole();
+        }
+
+        function nextQuestion() {
+            currentQ = questions[Math.floor(Math.random() * questions.length)];
+            document.getElementById('questionText').innerText = currentQ.q;
+        }
+
+        function popUpMole() {
+            if(!gameActive) return;
+            
+            const moles = document.querySelectorAll('.mole');
+            moles.forEach(m => m.classList.remove('up', 'hit'));
+
+            activeMole = Math.floor(Math.random() * 6);
+            const targetMole = moles[activeMole];
+            
+            let opts = [...currentQ.opt];
+            let answerText = opts[Math.floor(Math.random() * opts.length)];
+            targetMole.querySelector('.mole-text').innerText = answerText;
+            targetMole.dataset.ans = answerText;
+
+            targetMole.classList.add('up');
+
+            moleTimer = setTimeout(() => {
+                if(gameActive) popUpMole();
+            }, 1200);
+        }
+
+        document.querySelectorAll('.mole').forEach(mole => {
+            mole.addEventListener('pointerdown', (e) => {
+                if(!gameActive || !mole.classList.contains('up') || mole.classList.contains('hit')) return;
+                
+                mole.classList.add('hit');
+                clearTimeout(moleTimer);
+
+                const userAns = mole.dataset.ans;
+                if(userAns === currentQ.a) {
+                    combo++;
+                    let pts = 100 + (combo * 10);
+                    score += pts;
+                    showHitScore(mole, `+${pts}`);
+                } else {
+                    combo = 0;
+                    showHitScore(mole, `X`);
+                }
+
+                document.getElementById('score').innerText = score;
+                document.getElementById('combo').innerText = combo;
+
+                setTimeout(() => {
+                    nextQuestion();
+                    popUpMole();
+                }, 300);
+            });
+        });
+
+        function showHitScore(mole, text) {
+            const num = document.createElement('div');
+            num.className = 'hit-score';
+            num.innerText = text;
+            mole.parentElement.appendChild(num);
+            setTimeout(() => num.remove(), 600);
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(gameTimer);
+            clearTimeout(moleTimer);
+            document.querySelectorAll('.mole').forEach(m => m.classList.remove('up'));
+            document.getElementById('startBtn').innerText = '重新開始挑戰';
+
+            document.getElementById('finalScore').innerText = score;
+            let comment = score >= 800 ? "太強了！你已經完美掌握綠葉密碼！" : "表現不錯！再次閱讀學習卡片能拿高分喔！";
+            document.getElementById('evalComment').innerText = comment;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
